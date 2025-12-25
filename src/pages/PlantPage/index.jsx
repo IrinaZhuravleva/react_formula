@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
+
 import * as plantService from 'services/plant';
 import PlantItem from './PlantItem';
 import NavBar from '../shared-components/NavBar';
@@ -18,28 +21,37 @@ const PlantPage = () => {
         setPlants(data);
         setIsLoading(false);
 
-    })();
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
-        // console.log(plants);
+        })();
+    }, []);
+    // console.log(plants);
 
     return (
         <RedirectToHomeIfSignedOut>
             <div>
                 <NavBar />
                 {isLoading ? <LoadingSpinner /> :
-                    <div className="flex justify-center py-24 items-center">
-                        <div className="w-full max-w-5xl border border-red-400">
+                    <div className="flex justify-center py-10 items-center">
+                        <div className="w-full max-w-5xl">
                             <div className="text-4xl font-playfair text-emerald-800 px-5">
                                 Plants In Stock
                             </div>
                             <div className="flex flex-wrap gap-5 justify-center" >
                             {
-                                plants.map((plant) => <PlantItem key={plant.name} plant={plant}/>)
+                                plants.map((plant, index) => {
+                                    return (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: "20px" }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{once: true}}
+                                        transition={{ delay: 0.3 + (index % 3) * 0.2, duration: 0.4 }}>
+                                            <PlantItem key={plant.name} plant={plant}/>
+                                    </motion.div>)
+                            })
                             }
                             </div>      
                          </div>
-                    </div>}
+                    </div>
+                }
             </div>
         </RedirectToHomeIfSignedOut>
     );

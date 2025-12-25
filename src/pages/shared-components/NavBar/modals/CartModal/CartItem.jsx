@@ -1,9 +1,8 @@
 const CartItem = ({ item, index, refreshCartItems }) => {
 
   return (
-    <div
-      key={index}
-      className="flex justify-between items-center p-4 mb-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-200"
+    <div key={index}
+        className="flex justify-between items-center p-4 mb-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-200"
     >
       <div className="flex items-center gap-4">
         <img

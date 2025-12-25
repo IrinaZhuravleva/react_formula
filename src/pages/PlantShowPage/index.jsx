@@ -9,8 +9,8 @@ const PlantShowPage = () => {
     const [plant, setPlant] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const { plantId } = useParams();
-    console.log("Plant ID:", plantId);
-     useEffect(() => {
+
+    useEffect(() => {
         (async () => {
             setIsLoading(true);
             const response = await plantService.getPlantById(plantId);
@@ -24,7 +24,7 @@ const PlantShowPage = () => {
     return  <>
                 <NavBar />
                 <div className="flex justify-center min-h-screen bg-green-5">
-                    <div className="w-full max-w-5xl px-8 py-24">
+                    <div className="w-full max-w-5xl px-8 py-10">
                         {isLoading ? <LoadingSpinner /> : <PlantInfoSection plant={plant} />}
                     </div>
                 </div>;

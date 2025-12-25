@@ -6,6 +6,7 @@ import PlantPage from "./pages/PlantPage";
 import PlantShowPage from "./pages/PlantShowPage";
 import SessionContext from "./contexts/SessionContext";
 import * as userService from "services/user.js";
+import ScrollToTop from "./pages/shared-components/ScrollToTop";
 import { jwtDecode } from "jwt-decode";
 
 
@@ -26,6 +27,7 @@ const App = () =>{
       }
     }}>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
             <Route path="/" element={<SignInPage />} />
             <Route path="/signup" element={<SignUpPage />} />

@@ -3,6 +3,8 @@ import SessionContext from 'contexts/SessionContext';
 import { useState, useContext, useEffect } from 'react';
 import * as cartServices from 'services/cart';
 import CartItem from './CartItem';
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 const CartModal = (props ) => {
     const { userName } = useContext(SessionContext);
@@ -31,7 +33,10 @@ const CartModal = (props ) => {
 
     return <RemoveScroll>
             <div className="fixed flex flex-col z-10 top-0 left-0 items-end w-full h-full bg-black/30 backdrop-blur-sm font-lato">
-                <div className="w-full h-screen max-w-xl bg-white flex flex-col justify-between relative">
+                <motion.div
+                        initial={{ x: "100%" }}
+                        animate={{ x: 0 }}
+                        transition={{ duration: 0.5 }} className="w-full h-screen max-w-xl bg-white flex flex-col justify-between relative">
                     <div className='flex-1 overflow-y-auto'>
                         <div className="absolute w-full text-3xl text-center text-white shadow-md py-7 ☐ bg-emerald-800 font-playfair">
                             {userName}'s Cart
@@ -71,9 +76,9 @@ const CartModal = (props ) => {
                             <i className="fa-solid fa-arrow-right text-white ml-4"></i>
                         </button>
                     </div>
-                </div>
-                
+                </motion.div>
             </div>
+                
         </RemoveScroll>
 };
 
